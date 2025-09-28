@@ -51,6 +51,14 @@ A pixel-perfect replica of Axiom Trade's token discovery table with advanced rea
 - **Custom hooks** for reusable logic
 - **ESLint** and **TypeScript** for code quality
 
+
+
+
+<img width="1756" height="873" alt="Screenshot 2025-09-28 160201" src="https://github.com/user-attachments/assets/fcd68739-383f-406f-90ae-5f6146a2c1a1" />
+
+
+<img width="1663" height="884" alt="Screenshot 2025-09-28 160213" src="https://github.com/user-attachments/assets/30685d3a-95a0-45dc-b012-fc12efed1c4a" />
+
 ## 🏗 Architecture
 
 ### Atomic Design Structure
