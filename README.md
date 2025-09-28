@@ -1,12 +1,4 @@
-# Axiom Pulse - Token Discovery Platform
 
-A pixel-perfect replica of Axiom Trade's token discovery table with advanced real-time features, built with modern React architecture and performance optimizations.
-
-![Axiom Pulse Dashboard](https://via.placeholder.com/1200x600/1a1b23/ffffff?text=Axiom+Pulse+Dashboard)
-
-## 🚀 Live Demo
-
-**URL**: https://lovable.dev/projects/56ad6318-f940-47ee-a8b2-211ded9d10d8
 
 ## ✨ Features
 
