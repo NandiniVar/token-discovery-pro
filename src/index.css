@@ -8,33 +8,33 @@ All colors MUST be HSL for optimal theming support.
 
 @layer base {
   :root {
-    /* Dark Trading Theme - Primary Colors */
-    --background: 217 33% 5%;
+    /* Dark Trading Theme - Axiom-inspired Colors */
+    --background: 220 13% 9%;
     --foreground: 210 40% 95%;
 
     /* Card Components */
-    --card: 217 33% 8%;
+    --card: 220 13% 11%;
     --card-foreground: 210 40% 95%;
-    --card-hover: 217 33% 10%;
+    --card-hover: 220 13% 13%;
 
     /* Popover & Modal */
-    --popover: 217 33% 8%;
+    --popover: 220 13% 11%;
     --popover-foreground: 210 40% 95%;
 
-    /* Brand Colors */
-    --primary: 217 91% 60%;
+    /* Brand Colors - Axiom Blue */
+    --primary: 217 100% 65%;
     --primary-foreground: 210 40% 98%;
-    --primary-glow: 217 91% 70%;
+    --primary-glow: 217 100% 75%;
 
     /* Surface Colors */
-    --secondary: 217 33% 12%;
+    --secondary: 220 13% 14%;
     --secondary-foreground: 210 40% 85%;
-    --secondary-hover: 217 33% 15%;
+    --secondary-hover: 220 13% 16%;
 
-    --muted: 217 33% 10%;
+    --muted: 220 13% 12%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 217 91% 60%;
+    --accent: 217 100% 65%;
     --accent-foreground: 210 40% 98%;
 
     /* Status Colors - Trading Specific */
@@ -53,17 +53,17 @@ All colors MUST be HSL for optimal theming support.
     --neutral-foreground: 210 40% 98%;
 
     /* Interactive Elements */
-    --border: 217 33% 15%;
-    --border-hover: 217 33% 20%;
-    --input: 217 33% 12%;
-    --input-focus: 217 91% 60%;
-    --ring: 217 91% 60%;
+    --border: 220 13% 18%;
+    --border-hover: 220 13% 22%;
+    --input: 220 13% 14%;
+    --input-focus: 217 100% 65%;
+    --ring: 217 100% 65%;
 
     /* Table Specific */
-    --table-header: 217 33% 10%;
-    --table-row: 217 33% 8%;
-    --table-row-hover: 217 33% 12%;
-    --table-border: 217 33% 15%;
+    --table-header: 220 13% 12%;
+    --table-row: 220 13% 10%;
+    --table-row-hover: 220 13% 14%;
+    --table-border: 220 13% 16%;
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));

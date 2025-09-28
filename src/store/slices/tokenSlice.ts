@@ -55,93 +55,111 @@ export const fetchTokens = createAsyncThunk(
     // Simulate API call with mock data
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    const mockTokens: Token[] = [
-      {
-        id: '1',
-        symbol: 'PEPE',
-        name: 'Pepe Token',
-        price: 0.000001234,
-        priceChange24h: 15.67,
-        volume24h: 2847392,
-        marketCap: 12400000,
-        fdv: 15600000,
-        holders: 8924,
-        createdAt: new Date(Date.now() - 1000 * 60 * 30).toISOString(),
-        migrationProgress: 0,
-        category: 'new-pairs',
-        imageUrl: '/tokens/pepe.png',
-        verified: false,
-        riskLevel: 'high',
-        liquidity: 456789,
-        tradingVolume: 234567,
-        priceHistory: [0.000001100, 0.000001150, 0.000001200, 0.000001234],
-        lastUpdate: new Date().toISOString(),
-      },
-      {
-        id: '2',
-        symbol: 'WOJAK',
-        name: 'Wojak Token',
-        price: 0.0045,
-        priceChange24h: -8.23,
-        volume24h: 1456782,
-        marketCap: 8900000,
-        fdv: 12300000,
-        holders: 5647,
-        createdAt: new Date(Date.now() - 1000 * 60 * 45).toISOString(),
-        migrationProgress: 87,
-        category: 'final-stretch',
-        imageUrl: '/tokens/wojak.png',
-        verified: true,
-        riskLevel: 'medium',
-        liquidity: 789123,
-        tradingVolume: 567890,
-        priceHistory: [0.0049, 0.0047, 0.0046, 0.0045],
-        lastUpdate: new Date().toISOString(),
-      },
-      {
-        id: '3',
-        symbol: 'MOON',
-        name: 'Moon Shot',
-        price: 1.234,
-        priceChange24h: 234.56,
-        volume24h: 5847392,
-        marketCap: 45600000,
-        fdv: 78900000,
-        holders: 15678,
-        createdAt: new Date(Date.now() - 1000 * 60 * 120).toISOString(),
-        migrationProgress: 100,
-        category: 'migrated',
-        imageUrl: '/tokens/moon.png',
-        verified: true,
-        riskLevel: 'low',
-        liquidity: 2345678,
-        tradingVolume: 1234567,
-        priceHistory: [0.456, 0.789, 1.012, 1.234],
-        lastUpdate: new Date().toISOString(),
-      },
-      // Add more mock tokens for each category
-      ...Array.from({ length: 15 }, (_, i) => ({
-        id: `token-${i + 4}`,
-        symbol: `TKN${i + 4}`,
-        name: `Token ${i + 4}`,
-        price: Math.random() * 10,
-        priceChange24h: (Math.random() - 0.5) * 100,
-        volume24h: Math.random() * 10000000,
-        marketCap: Math.random() * 100000000,
-        fdv: Math.random() * 150000000,
-        holders: Math.floor(Math.random() * 50000),
-        createdAt: new Date(Date.now() - Math.random() * 1000 * 60 * 60 * 24).toISOString(),
-        migrationProgress: Math.floor(Math.random() * 100),
-        category: ['new-pairs', 'final-stretch', 'migrated'][Math.floor(Math.random() * 3)] as Token['category'],
-        imageUrl: `/tokens/token${i + 4}.png`,
-        verified: Math.random() > 0.5,
-        riskLevel: ['low', 'medium', 'high'][Math.floor(Math.random() * 3)] as Token['riskLevel'],
-        liquidity: Math.random() * 5000000,
-        tradingVolume: Math.random() * 2000000,
-        priceHistory: Array.from({ length: 4 }, () => Math.random() * 10),
-        lastUpdate: new Date().toISOString(),
-      }))
-    ];
+    // Enhanced mock token data generator with realistic trading metrics
+    const generateMockTokens = (category?: Token['category'], count: number = 50): Token[] => {
+      // Real meme token symbols and names for authenticity
+      const tokenData = [
+        { symbol: 'Unreal', name: 'Unreal Engine' },
+        { symbol: 'fixable', name: 'Fixable Token' },
+        { symbol: 'FINAGENT', name: 'Fin Agent AI' },
+        { symbol: 'SEEKEN', name: 'SeekGen' },
+        { symbol: 'MOLD', name: 'Mold Framework Official' },
+        { symbol: 'AYAMI', name: 'Ayasumi' },
+        { symbol: 'PEPE', name: 'Pepe the Frog' },
+        { symbol: 'SHIB', name: 'Shiba Inu' },
+        { symbol: 'DOGE', name: 'Dogecoin' },
+        { symbol: 'FLOKI', name: 'Floki Inu' },
+        { symbol: 'BABY', name: 'Baby Doge Coin' },
+        { symbol: 'WOJAK', name: 'Wojak Finance' },
+        { symbol: 'APU', name: 'Apu Apustaja' },
+        { symbol: 'BRETT', name: 'Brett Coin' },
+        { symbol: 'ANDY', name: 'Andy Warhol' },
+        { symbol: 'MOG', name: 'Mog Coin' },
+        { symbol: 'POPCAT', name: 'Popcat' },
+        { symbol: 'WIF', name: 'dogwifhat' },
+        { symbol: 'BONK', name: 'Bonk Inu' },
+        { symbol: 'BOME', name: 'Book of Meme' },
+        { symbol: 'MEW', name: 'Cat in Dogs World' },
+        { symbol: 'NEIRO', name: 'Neiro Ethereum' },
+        { symbol: 'GOAT', name: 'Goatseus Maximus' },
+        { symbol: 'RETARDIO', name: 'Retardio' },
+        { symbol: 'GIGA', name: 'Giga Chad' },
+        { symbol: 'PONKE', name: 'Ponke' },
+        { symbol: 'MYRO', name: 'Myro' },
+        { symbol: 'PUPS', name: 'Bitcoin Puppies' },
+        { symbol: 'SEAL', name: 'Seal' },
+        { symbol: 'KOMA', name: 'Koma Inu' }
+      ];
+
+      const riskLevels: Token['riskLevel'][] = ['low', 'medium', 'high'];
+      
+      return Array.from({ length: count }, (_, i) => {
+        const tokenInfo = tokenData[i % tokenData.length];
+        const actualCategory = category || (['new-pairs', 'final-stretch', 'migrated'] as Token['category'][])[Math.floor(Math.random() * 3)];
+        
+        // Generate realistic price ranges based on category
+        let price: number;
+        let marketCapMultiplier: number;
+        let migrationProgress: number;
+        
+        switch (actualCategory) {
+          case 'new-pairs':
+            price = Math.random() * 0.01; // Very low prices for new tokens
+            marketCapMultiplier = 10000 + Math.random() * 90000; // 10K - 100K
+            migrationProgress = Math.random() * 30; // 0-30% progress
+            break;
+          case 'final-stretch':
+            price = Math.random() * 0.1; // Medium prices
+            marketCapMultiplier = 100000 + Math.random() * 400000; // 100K - 500K
+            migrationProgress = 70 + Math.random() * 30; // 70-100% progress
+            break;
+          case 'migrated':
+            price = Math.random() * 1; // Higher prices for migrated
+            marketCapMultiplier = 500000 + Math.random() * 4500000; // 500K - 5M
+            migrationProgress = 100; // Complete
+            break;
+          default:
+            price = Math.random() * 0.1;
+            marketCapMultiplier = 50000 + Math.random() * 200000;
+            migrationProgress = Math.random() * 100;
+        }
+        
+        // Generate realistic volume based on market cap
+        const marketCap = price * marketCapMultiplier;
+        const volume24h = marketCap * (0.1 + Math.random() * 2); // 10%-200% of market cap
+        
+        // Generate more realistic price changes
+        const volatility = actualCategory === 'new-pairs' ? 3 : actualCategory === 'final-stretch' ? 2 : 1;
+        const priceChange24h = (Math.random() - 0.5) * 100 * volatility;
+        
+        return {
+          id: `${tokenInfo.symbol.toLowerCase()}-${i}`,
+          symbol: `${tokenInfo.symbol}${i > 29 ? Math.floor(i/30) : ''}`,
+          name: `${tokenInfo.name}${i > 29 ? ` ${Math.floor(i/30)}` : ''}`,
+          price,
+          priceChange24h,
+          volume24h,
+          marketCap,
+          fdv: marketCap * (1.2 + Math.random() * 0.8), // FDV 120%-200% of market cap
+          holders: Math.floor(Math.random() * 50000),
+          createdAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString(),
+          migrationProgress,
+          category: actualCategory,
+          verified: Math.random() > 0.8, // 20% verified rate
+          riskLevel: riskLevels[Math.floor(Math.random() * riskLevels.length)],
+          liquidity: marketCap * (0.05 + Math.random() * 0.15), // 5%-20% of market cap
+          tradingVolume: volume24h,
+          priceHistory: Array.from({ length: 4 }, () => price * (0.8 + Math.random() * 0.4)),
+          lastUpdate: new Date().toISOString(),
+          imageUrl: `/tokens/${tokenInfo.symbol.toLowerCase() === 'pepe' ? 'pepe.png' : 
+                           tokenInfo.symbol.toLowerCase() === 'wojak' ? 'wojak.png' :
+                           tokenInfo.symbol.toLowerCase() === 'moon' ? 'moon.png' :
+                           `token${(i % 9) + 4}.png`}`
+        };
+      });
+    };
+
+    const mockTokens = generateMockTokens(category, 30);
 
     return category ? mockTokens.filter(token => token.category === category) : mockTokens;
   }

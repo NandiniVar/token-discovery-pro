@@ -86,17 +86,17 @@ export function TradingDashboard() {
             {/* Logo and Title */}
             <div className="flex items-center gap-4">
               <motion.div
-                className="flex items-center gap-2"
+                className="flex items-center gap-3"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center">
-                  <TrendingUp className="h-5 w-5 text-primary-foreground" />
+                <div className="h-10 w-10 rounded-lg bg-gradient-primary flex items-center justify-center shadow-primary">
+                  <Zap className="h-6 w-6 text-primary-foreground" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold">Axiom Pulse</h1>
-                  <p className="text-xs text-muted-foreground">Token Discovery Platform</p>
+                  <h1 className="text-2xl font-bold text-foreground">Pulse</h1>
+                  <p className="text-sm text-muted-foreground">Live Token Discovery</p>
                 </div>
               </motion.div>
             </div>

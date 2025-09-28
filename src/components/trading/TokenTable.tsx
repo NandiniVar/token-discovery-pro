@@ -5,6 +5,7 @@ import {
   ChevronDown, 
   TrendingUp, 
   TrendingDown, 
+  Zap,
   Eye,
   Star,
   MoreHorizontal,
@@ -264,28 +265,33 @@ export function TokenTable({ category, className }: TokenTableProps) {
             <table className="w-full">
               <thead className="bg-table-header">
                 <tr className="border-b border-table-border">
-                  <th className="px-4 py-3 text-left">
-                    <SortableHeader column="name">Token</SortableHeader>
+                  <th className="px-3 py-2 text-left w-48">
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Token</span>
                   </th>
-                  <th className="px-4 py-3 text-right">
-                    <SortableHeader column="price">Price</SortableHeader>
+                  <th className="px-2 py-2 text-center w-16">
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">1m</span>
                   </th>
-                  <th className="px-4 py-3 text-right">
-                    <SortableHeader column="priceChange24h">24h Change</SortableHeader>
+                  <th className="px-2 py-2 text-center w-16">
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">5m</span>
                   </th>
-                  <th className="px-4 py-3 text-right">
-                    <SortableHeader column="volume24h">Volume</SortableHeader>
+                  <th className="px-2 py-2 text-center w-16">
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">1h</span>
                   </th>
-                  <th className="px-4 py-3 text-right">
-                    <SortableHeader column="marketCap">Market Cap</SortableHeader>
+                  <th className="px-2 py-2 text-center w-16">
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">6h</span>
                   </th>
-                  <th className="px-4 py-3 text-right">
-                    <SortableHeader column="holders">Holders</SortableHeader>
+                  <th className="px-2 py-2 text-center w-16">
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">24h</span>
                   </th>
-                  <th className="px-4 py-3 text-center">
-                    <SortableHeader column="createdAt">Age</SortableHeader>
+                  <th className="px-2 py-2 text-right w-20">
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">MC</span>
                   </th>
-                  <th className="px-4 py-3 text-center">Actions</th>
+                  <th className="px-2 py-2 text-right w-20">
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Volume</span>
+                  </th>
+                  <th className="px-3 py-2 text-center w-16">
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider"></span>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -306,117 +312,107 @@ export function TokenTable({ category, className }: TokenTableProps) {
                       onClick={() => handleTokenClick(token)}
                     >
                       {/* Token Info */}
-                      <td className="px-4 py-3">
-                        <div className="flex items-center gap-3">
-                          <Avatar className="h-8 w-8">
+                      <td className="px-3 py-2">
+                        <div className="flex items-center gap-2">
+                          <Avatar className="h-6 w-6">
                             <AvatarImage src={token.imageUrl} alt={token.symbol} />
-                            <AvatarFallback className="text-xs bg-primary/10 text-primary">
+                            <AvatarFallback className="text-xs bg-primary/10 text-primary text-[10px]">
                               {token.symbol.slice(0, 2)}
                             </AvatarFallback>
                           </Avatar>
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <span className="font-semibold">{token.symbol}</span>
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-1">
+                              <span className="font-semibold text-sm truncate">{token.symbol}</span>
                               {token.verified && (
-                                <Badge variant="outline" className="text-xs px-1 py-0">
-                                  ✓
-                                </Badge>
+                                <span className="text-xs text-muted-foreground">✓</span>
                               )}
-                              <Badge 
-                                variant={getRiskBadgeVariant(token.riskLevel)}
-                                className="text-xs px-1 py-0"
-                              >
-                                {token.riskLevel}
-                              </Badge>
                             </div>
-                            <div className="text-sm text-muted-foreground truncate max-w-32">
+                            <div className="text-xs text-muted-foreground truncate">
                               {token.name}
                             </div>
                           </div>
                         </div>
                       </td>
 
-                      {/* Price */}
-                      <td className="px-4 py-3 text-right">
-                        <PriceCell token={token} />
+                      {/* 1m Change */}
+                      <td className="px-2 py-2 text-center">
+                        <span className={cn(
+                          'text-xs font-mono',
+                          Math.random() > 0.5 ? 'text-success' : 'text-danger'
+                        )}>
+                          {(Math.random() * 20 - 10).toFixed(1)}%
+                        </span>
+                      </td>
+
+                      {/* 5m Change */}
+                      <td className="px-2 py-2 text-center">
+                        <span className={cn(
+                          'text-xs font-mono',
+                          Math.random() > 0.5 ? 'text-success' : 'text-danger'
+                        )}>
+                          {(Math.random() * 30 - 15).toFixed(1)}%
+                        </span>
+                      </td>
+
+                      {/* 1h Change */}
+                      <td className="px-2 py-2 text-center">
+                        <span className={cn(
+                          'text-xs font-mono',
+                          Math.random() > 0.5 ? 'text-success' : 'text-danger'
+                        )}>
+                          {(Math.random() * 50 - 25).toFixed(1)}%
+                        </span>
+                      </td>
+
+                      {/* 6h Change */}
+                      <td className="px-2 py-2 text-center">
+                        <span className={cn(
+                          'text-xs font-mono',
+                          token.priceChange24h > 0 ? 'text-success' : 'text-danger'
+                        )}>
+                          {(token.priceChange24h * 1.5).toFixed(1)}%
+                        </span>
                       </td>
 
                       {/* 24h Change */}
-                      <td className="px-4 py-3 text-right">
-                        <ChangeCell change={token.priceChange24h} />
-                      </td>
-
-                      {/* Volume */}
-                      <td className="px-4 py-3 text-right font-mono">
-                        {formatNumber(token.volume24h, { currency: true, compact: true })}
+                      <td className="px-2 py-2 text-center">
+                        <span className={cn(
+                          'text-xs font-mono',
+                          token.priceChange24h > 0 ? 'text-success' : 'text-danger'
+                        )}>
+                          {token.priceChange24h > 0 ? '+' : ''}{token.priceChange24h.toFixed(1)}%
+                        </span>
                       </td>
 
                       {/* Market Cap */}
-                      <td className="px-4 py-3 text-right font-mono">
-                        {formatNumber(token.marketCap, { currency: true, compact: true })}
+                      <td className="px-2 py-2 text-right">
+                        <span className="text-xs font-mono text-foreground">
+                          ${formatNumber(token.marketCap, { compact: true }).replace('$', '')}
+                        </span>
                       </td>
 
-                      {/* Holders */}
-                      <td className="px-4 py-3 text-right font-mono">
-                        {formatNumber(token.holders, { compact: true })}
+                      {/* Volume */}
+                      <td className="px-2 py-2 text-right">
+                        <span className="text-xs font-mono text-muted-foreground">
+                          ${formatNumber(token.volume24h, { compact: true }).replace('$', '')}
+                        </span>
                       </td>
 
-                      {/* Age */}
-                      <td className="px-4 py-3 text-center text-sm text-muted-foreground">
-                        {formatTimeAgo(token.createdAt)}
-                      </td>
-
-                      {/* Actions */}
-                      <td className="px-4 py-3">
-                        <div className="flex items-center justify-center gap-1">
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                className="h-8 w-8 p-0"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  handleTokenClick(token);
-                                }}
-                              >
-                                <Eye className="h-4 w-4" />
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>View details</TooltipContent>
-                          </Tooltip>
-
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className="h-8 px-3 bg-gradient-primary text-primary-foreground hover:opacity-90"
-                            onClick={(e) => handleQuickBuy(token, e)}
-                          >
-                            Buy
-                          </Button>
-
-                          <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                className="h-8 w-8 p-0"
-                                onClick={(e) => e.stopPropagation()}
-                              >
-                                <MoreHorizontal className="h-4 w-4" />
-                              </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end" className="w-40">
-                              <DropdownMenuItem>
-                                <Star className="h-4 w-4 mr-2" />
-                                Add to Watchlist
-                              </DropdownMenuItem>
-                              <DropdownMenuSeparator />
-                              <DropdownMenuItem>View Chart</DropdownMenuItem>
-                              <DropdownMenuItem>Set Alert</DropdownMenuItem>
-                            </DropdownMenuContent>
-                          </DropdownMenu>
-                        </div>
+                      {/* Quick Buy Button */}
+                      <td className="px-3 py-2">
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="h-6 w-6 p-0 bg-primary hover:bg-primary/90 rounded"
+                              onClick={(e) => handleQuickBuy(token, e)}
+                            >
+                              <Zap className="h-3 w-3 text-primary-foreground" />
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>Quick Buy</TooltipContent>
+                        </Tooltip>
                       </td>
                     </motion.tr>
                   ))}
